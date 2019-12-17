@@ -1,4 +1,8 @@
+# Calculator - 2019
+# frozen_string_literal: true
+
 module Calculator
+  # Netto 2019
   class Netto
     class << self
       def call(amount:, commission_total:)
@@ -6,10 +10,13 @@ module Calculator
       end
 
       private
+
       def calculate(amount:, commission_total:)
         result = amount - commission_total
-        raise CalculatorError.new 'Commission is higer than total Amount' if result <= 0
-        result
+        return result unless result <= 0
+
+        raise CalculatorError,
+              'Commission is higer than total Amount'
       end
     end
   end

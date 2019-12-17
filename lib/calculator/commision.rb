@@ -1,4 +1,8 @@
+# Calculator - 2019
+# frozen_string_literal: true
+
 module Calculator
+  # Commission 2019
   class Commission
     DEFAULT_COMMISION = 1.0
     DEFAULT_COMMISION_PERCENT = 30.0
@@ -11,7 +15,7 @@ module Calculator
     end
 
     def commission_amount
-       user.commission_amount + product.commission_amount
+      user.commission_amount + product.commission_amount
     end
 
     class << self
@@ -22,10 +26,11 @@ module Calculator
       end
 
       private
+
       def calculate(amount:, commission_amount:, commission_percent:)
         amount * normalize_percent(commission_percent: commission_percent) +
-        calulate_commission_amount(commission_amount: commission_amount,
-                                   amount: amount)
+          calulate_commission_amount(commission_amount: commission_amount,
+                                     amount: amount)
       end
 
       def normalize_percent(commission_percent:)
@@ -34,6 +39,7 @@ module Calculator
 
       def calulate_commission_amount(commission_amount:, amount:)
         return commission_amount if amount <= 100
+
         ((amount - 100) * 0.001) + commission_amount
       end
     end
